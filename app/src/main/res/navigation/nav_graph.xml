@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/listOfBreedsFragment">
+
+    <fragment
+        android:id="@+id/listOfBreedsFragment"
+        android:name="com.polodarb.rdogs.ui.fragments.ListOfBreedsFragment"
+        android:label="ListOfBreedsFragment" >
+        <action
+            android:id="@+id/action_listOfBreedsFragment_to_photosOfDogsFragment"
+            app:destination="@id/photosOfDogsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/photosOfDogsFragment"
+        android:name="com.polodarb.rdogs.ui.fragments.PhotosOfDogsFragment"
+        android:label="PhotosOfDogsFragment" >
+        <action
+            android:id="@+id/action_photosOfDogsFragment_to_listOfBreedsFragment"
+            app:destination="@id/listOfBreedsFragment" />
+    </fragment>
+</navigation>
