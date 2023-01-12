@@ -8,32 +8,28 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.polodarb.rdogs.R
 import com.polodarb.rdogs.data.model.ListOfBreedsModel
-import com.polodarb.rdogs.databinding.ListOfBreedsRvItemBinding
-import com.polodarb.rdogs.databinding.PhotosOfDogsBinding
 
-class ListOfBreedsRV() : RecyclerView.Adapter<ListOfBreedsRV.ViewHolder>() {
+class ListOfBreedsRV(private val list: List<ListOfBreedsModel>) :
+    RecyclerView.Adapter<ListOfBreedsRV.ViewHolder>() {
 
-    private val list = mutableListOf<ListOfBreedsModel>()
-
-    class ViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
-        fun bindData(item: ListOfBreedsModel) {
-            var breedName = view.findViewById<TextView>(R.id.breedName)
-//            var breedPhoto = view.findViewById<ImageView>(R.id.breedPhoto)
-
-            breedName.text = item.name
-//            breedPhoto = item.photo
-        }
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var breedPhoto: ImageView = itemView.findViewById(R.id.breedPhoto)
+        var breedName: TextView = itemView.findViewById(R.id.breedName)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.list_of_breeds_rv_item, parent, false)
-
+        val inflater = LayoutInflater.from(parent.context)
+        val view = inflater.inflate(R.layout.list_of_breeds_rv_item, parent, false)
         return ViewHolder(view)
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val item = list[position]
+
+        holder.breedName.text = item.name
+        holder.breedPhoto.setImageResource(item.photo)
     }
 
     override fun getItemCount(): Int = list.size
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bindData(list[position])
-    }
 }

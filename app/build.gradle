@@ -36,17 +36,21 @@ android {
 }
 
 dependencies {
-    def nav_version = "2.5.3"
+    implementation 'androidx.core:core-ktx:+'
+    def nav_version = '2.5.3'
 
     // Fragments
-    implementation "androidx.fragment:fragment-ktx:1.5.5"
+    implementation 'androidx.fragment:fragment-ktx:1.5.5'
 
     // MD3
     implementation 'com.google.android.material:material:1.8.0-beta01'
 
     // Navigation
-    implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
-    implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+    // Retrofit2
+    implementation 'com.squareup.retrofit2:retrofit:2.1.0'
 
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
