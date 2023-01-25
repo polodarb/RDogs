@@ -1,6 +1,6 @@
 package com.polodarb.rdogs.data.model
 
 data class ListOfBreedsModel(
-    val name: String,
-    val photo: Int
+    val status: String,
+    val message: Map<String, List<String>>
 )
