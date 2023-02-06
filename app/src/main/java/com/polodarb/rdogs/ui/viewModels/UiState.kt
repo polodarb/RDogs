@@ -1,9 +1,9 @@
 package com.polodarb.rdogs.ui.viewModels
 
-interface UiState {
-    object Loading : UiState
+sealed class UiState {
+    object Loading : UiState()
 
-    data class Success(val data: List<String>) : UiState
+    data class Success(val data: List<String>) : UiState()
 
-    data class Error(val throwable: Throwable? = null) : UiState
+    data class Error(val throwable: String) : UiState()
 }

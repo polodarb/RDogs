@@ -5,14 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.polodarb.rdogs.databinding.ListOfBreedsBinding
-import com.polodarb.rdogs.databinding.PhotosOfDogsBinding
+import com.polodarb.rdogs.databinding.FragmentPhotosOfDogsBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class PhotosOfDogsFragment : Fragment() {
 
-    private val binding: PhotosOfDogsBinding by lazy { PhotosOfDogsBinding.inflate(layoutInflater) }
+    private val binding: FragmentPhotosOfDogsBinding by lazy { FragmentPhotosOfDogsBinding.inflate(layoutInflater) }
 
     override fun onCreateView(
         inflater: LayoutInflater,

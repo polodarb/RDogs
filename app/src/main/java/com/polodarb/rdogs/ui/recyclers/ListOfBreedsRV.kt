@@ -41,6 +41,7 @@ class ListOfBreedsRV(
     }
 
     override fun getItemCount(): Int = list.size
+
     override fun onClick(v: View) {
         val itemBreed = v.tag as String
 

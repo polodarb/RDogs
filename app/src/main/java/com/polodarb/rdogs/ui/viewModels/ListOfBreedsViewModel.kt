@@ -11,15 +11,17 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ListOfBreedsViewModel @Inject constructor(private val repository: Repository) : ViewModel() {
+class ListOfBreedsViewModel @Inject constructor(
+    private val repository: Repository
+) : ViewModel() {
 
     private val _state = MutableStateFlow<UiState>(UiState.Loading)
     val state: StateFlow<UiState> = _state.asStateFlow()
 
     init {
         viewModelScope.launch {
-            repository.getBreedsListRemote().collect { listBreeds ->
-                _state.value = UiState.Success(listBreeds)
+            repository.getListBreeds().collect { uiStates ->
+                _state.value = uiStates
             }
         }
     }

@@ -37,11 +37,48 @@
         <com.google.android.material.progressindicator.LinearProgressIndicator
             android:id="@+id/progress_horizontal"
             android:layout_width="match_parent"
-            android:visibility="gone"
             android:layout_height="wrap_content"
-            android:indeterminate="true" />
+            android:indeterminate="true"
+            android:visibility="gone" />
 
     </com.google.android.material.appbar.AppBarLayout>
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        android:paddingBottom="12dp"
+        android:scrollbars="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:animationCache="true"
+        app:shimmer_repeat_mode="restart">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/list_of_breeds_rv_item" />
+            <include layout="@layout/list_of_breeds_rv_item" />
+            <include layout="@layout/list_of_breeds_rv_item" />
+            <include layout="@layout/list_of_breeds_rv_item" />
+            <include layout="@layout/list_of_breeds_rv_item" />
+            <include layout="@layout/list_of_breeds_rv_item" />
+            <include layout="@layout/list_of_breeds_rv_item" />
+            <include layout="@layout/list_of_breeds_rv_item" />
+            <include layout="@layout/list_of_breeds_rv_item" />
+            <include layout="@layout/list_of_breeds_rv_item" />
+            <include layout="@layout/list_of_breeds_rv_item" />
+            <include layout="@layout/list_of_breeds_rv_item" />
+            <include layout="@layout/list_of_breeds_rv_item" />
+            <include layout="@layout/list_of_breeds_rv_item" />
+            <include layout="@layout/list_of_breeds_rv_item" />
+
+        </LinearLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_main"
