@@ -1,4 +1,4 @@
-package com.polodarb.rdogs
+package com.polodarb.rdogs.ui.activities
 
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
@@ -6,7 +6,9 @@ import android.os.Bundle
 import androidx.core.view.WindowCompat
 import androidx.navigation.fragment.NavHostFragment
 import com.polodarb.rdogs.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
 

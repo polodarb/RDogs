@@ -12,7 +12,10 @@ interface ItemClickListener {
     fun itemOnClick(item: String)
 }
 
-class ListOfBreedsRV(private val list: List<String>, private val mItemClickListener: ItemClickListener) :
+class ListOfBreedsRV(
+    private val list: List<String>,
+    private val mItemClickListener: ItemClickListener
+) :
     RecyclerView.Adapter<ListOfBreedsRV.ViewHolder>(), View.OnClickListener {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -31,7 +34,7 @@ class ListOfBreedsRV(private val list: List<String>, private val mItemClickListe
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = list[position]
 
-        with (holder) {
+        with(holder) {
             breedName.text = item
             itemView.tag = item
         }
