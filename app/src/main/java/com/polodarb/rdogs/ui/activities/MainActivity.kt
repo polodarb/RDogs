@@ -4,9 +4,14 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.view.WindowCompat
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import com.polodarb.rdogs.R
 import com.polodarb.rdogs.databinding.ActivityMainBinding
+import com.polodarb.rdogs.utils.Utils
 import dagger.hilt.android.AndroidEntryPoint
+import okhttp3.internal.Util
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -23,5 +28,6 @@ class MainActivity : AppCompatActivity() {
         window.statusBarColor = Color.TRANSPARENT
 
         supportFragmentManager.findFragmentById(binding.fragmentContainerView.id) as NavHostFragment
+
     }
 }

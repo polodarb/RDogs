@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.core.view.isEmpty
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -18,6 +19,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.polodarb.rdogs.R
+import com.polodarb.rdogs.data.local.Breeds
 import com.polodarb.rdogs.databinding.FragmentListOfBreedsBinding
 import com.polodarb.rdogs.ui.recyclers.ItemClickListener
 import com.polodarb.rdogs.ui.recyclers.ListOfBreedsRV
@@ -91,7 +93,7 @@ class ListOfBreedsFragment : Fragment() {
         binding.collapseToolbar.isVisible = true
     }
 
-    private fun setAdapter(list: List<String>) {
+    private fun setAdapter(list: List<Breeds>) {
         val adapter = ListOfBreedsRV(list, object : ItemClickListener {
             override fun itemOnClick(item: String) {
                 Toast.makeText(requireContext(), item, Toast.LENGTH_SHORT).show()

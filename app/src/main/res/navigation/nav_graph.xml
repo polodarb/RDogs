@@ -7,19 +7,22 @@
 
     <fragment
         android:id="@+id/listOfBreedsFragment"
+        tools:layout="@layout/fragment_list_of_breeds"
         android:name="com.polodarb.rdogs.ui.fragments.ListOfBreedsFragment"
-        android:label="ListOfBreedsFragment" >
+        android:label="ListOfBreedsFragment">
         <action
             android:id="@+id/action_listOfBreedsFragment_to_photosOfDogsFragment"
             app:destination="@id/photosOfDogsFragment" />
         <action
+            app:popUpTo="@id/listOfBreedsFragment"
+            app:popUpToInclusive="true"
             android:id="@+id/action_listOfBreedsFragment_to_networkErrorFragment"
             app:destination="@id/networkErrorFragment" />
     </fragment>
     <fragment
         android:id="@+id/photosOfDogsFragment"
         android:name="com.polodarb.rdogs.ui.fragments.PhotosOfDogsFragment"
-        android:label="PhotosOfDogsFragment" >
+        android:label="PhotosOfDogsFragment">
         <action
             android:id="@+id/action_photosOfDogsFragment_to_listOfBreedsFragment"
             app:destination="@id/listOfBreedsFragment" />
@@ -28,7 +31,7 @@
         android:id="@+id/networkErrorFragment"
         android:name="com.polodarb.rdogs.ui.fragments.NetworkErrorFragment"
         android:label="fragment_network_error"
-        tools:layout="@layout/fragment_network_error" >
+        tools:layout="@layout/fragment_network_error">
         <action
             android:id="@+id/action_networkErrorFragment_to_listOfBreedsFragment"
             app:destination="@id/listOfBreedsFragment" />

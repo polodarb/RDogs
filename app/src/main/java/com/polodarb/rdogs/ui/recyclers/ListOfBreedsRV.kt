@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.polodarb.rdogs.R
+import com.polodarb.rdogs.data.local.Breeds
 import com.polodarb.rdogs.databinding.ListOfBreedsRvItemBinding
 
 interface ItemClickListener {
@@ -13,7 +14,7 @@ interface ItemClickListener {
 }
 
 class ListOfBreedsRV(
-    private val list: List<String>,
+    private val list: List<Breeds>,
     private val mItemClickListener: ItemClickListener
 ) :
     RecyclerView.Adapter<ListOfBreedsRV.ViewHolder>(), View.OnClickListener {
@@ -35,8 +36,8 @@ class ListOfBreedsRV(
         val item = list[position]
 
         with(holder) {
-            breedName.text = item
-            itemView.tag = item
+            breedName.text = item.breed
+            itemView.tag = item.breed
         }
     }
 
