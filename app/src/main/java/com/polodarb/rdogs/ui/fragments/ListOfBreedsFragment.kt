@@ -9,7 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import androidx.core.view.isEmpty
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -72,6 +71,7 @@ class ListOfBreedsFragment : Fragment() {
 
                 is UiState.Error -> {
                     findNavController().navigate(R.id.action_listOfBreedsFragment_to_networkErrorFragment)
+                    Toast.makeText(requireContext(), "error", Toast.LENGTH_SHORT).show()
                     binding.shimmerLayout.visibility = View.GONE
                     errorStateVisibility()
                 }
