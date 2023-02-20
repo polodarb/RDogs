@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.view.HapticFeedbackConstants
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,7 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -42,6 +44,9 @@ class ListOfBreedsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.shimmerLayout.visibility = View.VISIBLE
+        binding.shimmerLayout.startShimmer()
+
         binding.rvMain.layoutManager = LinearLayoutManager(requireContext())
 
         val viewModel: ListOfBreedsViewModel by viewModels()
@@ -53,6 +58,7 @@ class ListOfBreedsFragment : Fragment() {
         }
 
         setUpGitHubIcon()
+
     }
 
     private suspend fun viewModelStates(viewModel: ListOfBreedsViewModel) {
@@ -71,19 +77,10 @@ class ListOfBreedsFragment : Fragment() {
 
                 is UiState.Error -> {
                     findNavController().navigate(R.id.action_listOfBreedsFragment_to_networkErrorFragment)
-                    Toast.makeText(requireContext(), "error", Toast.LENGTH_SHORT).show()
                     binding.shimmerLayout.visibility = View.GONE
-                    errorStateVisibility()
                 }
             }
         }
-    }
-
-    private fun errorStateVisibility() {
-        binding.rvMain.isVisible = false
-        binding.topAppBar.isVisible = false
-        binding.appbarMain.isVisible = false
-        binding.collapseToolbar.isVisible = false
     }
 
     private fun loadingStateVisibility() {
@@ -96,7 +93,7 @@ class ListOfBreedsFragment : Fragment() {
     private fun setAdapter(list: List<Breeds>) {
         val adapter = ListOfBreedsRV(list, object : ItemClickListener {
             override fun itemOnClick(item: String) {
-                Toast.makeText(requireContext(), item, Toast.LENGTH_SHORT).show()
+                findNavController().navigate(R.id.action_listOfBreedsFragment_to_photosOfDogsFragment)
             }
         })
         binding.rvMain.adapter = adapter

@@ -21,6 +21,7 @@ class Repository @Inject constructor(
 
     fun getListBreeds() = flow<UiState> {
         emit(UiState.Loading)
+
         val firstEmit = local.getAllListOfBreeds().first()
         emit(UiState.Success(firstEmit))
 

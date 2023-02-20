@@ -12,7 +12,11 @@
         android:label="ListOfBreedsFragment">
         <action
             android:id="@+id/action_listOfBreedsFragment_to_photosOfDogsFragment"
-            app:destination="@id/photosOfDogsFragment" />
+            app:destination="@id/photosOfDogsFragment"
+            app:enterAnim="@anim/enter_anim"
+            app:exitAnim="@anim/exit_anim"
+            app:popEnterAnim="@anim/pop_enter_anim"
+            app:popExitAnim="@anim/pop_exit_anim" />
         <action
             app:popUpTo="@id/listOfBreedsFragment"
             app:popUpToInclusive="true"
@@ -25,7 +29,11 @@
         android:label="PhotosOfDogsFragment">
         <action
             android:id="@+id/action_photosOfDogsFragment_to_listOfBreedsFragment"
-            app:destination="@id/listOfBreedsFragment" />
+            app:destination="@id/listOfBreedsFragment"
+            app:enterAnim="@anim/enter_anim"
+            app:exitAnim="@anim/exit_anim"
+            app:popEnterAnim="@anim/pop_enter_anim"
+            app:popExitAnim="@anim/pop_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/networkErrorFragment"
@@ -34,6 +42,12 @@
         tools:layout="@layout/fragment_network_error">
         <action
             android:id="@+id/action_networkErrorFragment_to_listOfBreedsFragment"
-            app:destination="@id/listOfBreedsFragment" />
+            app:destination="@id/listOfBreedsFragment"
+            app:popUpTo="@id/networkErrorFragment"
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/enter_anim"
+            app:exitAnim="@anim/exit_anim"
+            app:popEnterAnim="@anim/pop_enter_anim"
+            app:popExitAnim="@anim/pop_exit_anim" />
     </fragment>
 </navigation>
