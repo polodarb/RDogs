@@ -34,13 +34,6 @@
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
-        <com.google.android.material.progressindicator.LinearProgressIndicator
-            android:id="@+id/progress_horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:indeterminate="true"
-            android:visibility="gone" />
-
     </com.google.android.material.appbar.AppBarLayout>
 
     <com.facebook.shimmer.ShimmerFrameLayout

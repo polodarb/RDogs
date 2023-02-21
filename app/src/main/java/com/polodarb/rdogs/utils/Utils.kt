@@ -4,6 +4,9 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
+import android.view.HapticFeedbackConstants
+import android.view.View
+import androidx.annotation.RequiresApi
 import java.util.Locale
 
 object Utils {
@@ -49,6 +52,10 @@ object Utils {
             }
         }
         return false
+    }
+
+    fun setHapticEffect(v: View) {
+        v.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_RELEASE)
     }
 
 }

@@ -17,4 +17,5 @@ interface BreedsDao {
 
     @Query("DELETE FROM breeds_table")
     fun deleteAll()
+
 }

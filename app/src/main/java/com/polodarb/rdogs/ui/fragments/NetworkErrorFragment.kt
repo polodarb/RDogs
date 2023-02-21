@@ -39,7 +39,7 @@ class NetworkErrorFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.retryBtn.setOnClickListener {
-            binding.retryBtn.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_RELEASE)
+            Utils.setHapticEffect(binding.retryBtn)
             if (Utils.isNetworkAvailable(requireContext())) {
                 findNavController().navigate(R.id.action_networkErrorFragment_to_listOfBreedsFragment)
             } else {
@@ -49,7 +49,7 @@ class NetworkErrorFragment : Fragment() {
         }
 
         binding.connectionSettingsBtn.setOnClickListener {
-            binding.connectionSettingsBtn.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_RELEASE)
+            Utils.setHapticEffect(binding.connectionSettingsBtn)
             startActivity(Intent(Settings.ACTION_WIFI_SETTINGS))
         }
 

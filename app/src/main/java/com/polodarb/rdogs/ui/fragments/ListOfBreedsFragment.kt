@@ -10,9 +10,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -94,6 +96,7 @@ class ListOfBreedsFragment : Fragment() {
         val adapter = ListOfBreedsRV(list, object : ItemClickListener {
             override fun itemOnClick(item: String) {
                 findNavController().navigate(R.id.action_listOfBreedsFragment_to_photosOfDogsFragment)
+                setFragmentResult("requestKey", bundleOf("bundleKey" to item))
             }
         })
         binding.rvMain.adapter = adapter
