@@ -11,7 +11,6 @@ import com.polodarb.rdogs.R
 import com.polodarb.rdogs.databinding.ActivityMainBinding
 import com.polodarb.rdogs.utils.Utils
 import dagger.hilt.android.AndroidEntryPoint
-import okhttp3.internal.Util
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -27,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         window.statusBarColor = Color.TRANSPARENT
 
-        supportFragmentManager.findFragmentById(binding.fragmentContainerView.id) as NavHostFragment
+//        supportFragmentManager.findFragmentById(binding.fragmentContainerView.id) as NavHostFragment
 
     }
 }

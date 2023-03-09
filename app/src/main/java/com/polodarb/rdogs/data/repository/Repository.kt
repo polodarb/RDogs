@@ -1,6 +1,7 @@
 package com.polodarb.rdogs.data.repository
 
 import android.content.Context
+import android.util.Log
 import com.polodarb.rdogs.data.local.Breeds
 import com.polodarb.rdogs.data.local.BreedsDao
 import com.polodarb.rdogs.data.remote.API
@@ -62,8 +63,10 @@ class Repository @Inject constructor(
         emit(local.getAllListOfBreeds())
     }
 
-    suspend fun getPhotosByBreedRemote() = flow<List<String>> {
-        emit(remote.getPhotosByBreed().body()?.message!!)
+    suspend fun getPhotosByBreedRemote(breed: String) = flow<UiState> {
+        val response = remote.getPhotosByBreed(breed).body()?.message
+        Log.wtf("LINK", "resp - $response")
+        (response as List<Breeds>?)?.let { UiState.Success(it) }?.let { emit (it) }
     }
 
     // getPhotosByBreedLocal

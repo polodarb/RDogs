@@ -6,11 +6,12 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="12dp"
+    android:layout_marginBottom="24dp"
     app:cardCornerRadius="22dp">
 
     <ImageView
         android:id="@+id/breedPhoto"
-        android:layout_width="172dp"
+        android:layout_width="184dp"
         android:layout_height="230dp"
         android:background="@drawable/image_view_round_corner"
         android:clipToOutline="true"

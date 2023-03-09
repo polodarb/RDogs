@@ -1,6 +1,6 @@
 package com.polodarb.rdogs.data.model
 
-data class PhotosByBreedModel(
+data class ParentModel(
     val status: String,
     val message: List<String>
 )
