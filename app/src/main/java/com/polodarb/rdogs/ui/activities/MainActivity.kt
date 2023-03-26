@@ -26,7 +26,5 @@ class MainActivity : AppCompatActivity() {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         window.statusBarColor = Color.TRANSPARENT
 
-//        supportFragmentManager.findFragmentById(binding.fragmentContainerView.id) as NavHostFragment
-
     }
 }

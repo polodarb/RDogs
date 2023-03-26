@@ -1,7 +1,6 @@
 package com.polodarb.rdogs.ui.recyclers
 
 import android.os.Build
-import android.view.HapticFeedbackConstants
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +8,7 @@ import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.polodarb.rdogs.R
-import com.polodarb.rdogs.data.local.Breeds
+import com.polodarb.rdogs.data.local.Breed
 import com.polodarb.rdogs.databinding.ListOfBreedsRvItemBinding
 import com.polodarb.rdogs.utils.Utils
 
@@ -18,7 +17,7 @@ interface ItemClickListener {
 }
 
 class ListOfBreedsRV(
-    private val list: List<Breeds>,
+    private val list: List<Breed>,
     private val mItemClickListener: ItemClickListener
 ) :
     RecyclerView.Adapter<ListOfBreedsRV.ViewHolder>(), View.OnClickListener {

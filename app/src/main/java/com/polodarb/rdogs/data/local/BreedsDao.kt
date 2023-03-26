@@ -4,18 +4,17 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface BreedsDao {
 
-    @Query("SELECT * FROM breeds_table")
-    fun getAllListOfBreeds(): Flow<List<Breeds>>
+    @Query("SELECT * FROM breed_table")
+    fun getAllListOfBreeds(): List<Breed>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertListOfBreeds(breeds: List<Breeds>)
+    suspend fun insertListOfBreeds(breeds: List<Breed>)
 
-    @Query("DELETE FROM breeds_table")
+    @Query("DELETE FROM breed_table")
     fun deleteAll()
 
 }

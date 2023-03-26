@@ -5,8 +5,8 @@ import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "breeds_table", indices = [Index(value = ["breed"], unique = true)])
-data class Breeds (
+@Entity(tableName = "breed_table", indices = [Index(value = ["breed"], unique = true)])
+data class Breed (
 
     @PrimaryKey(autoGenerate = true) val id: Int,
 

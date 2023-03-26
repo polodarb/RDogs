@@ -4,12 +4,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.polodarb.rdogs.R
-import com.polodarb.rdogs.data.local.Breeds
-import com.polodarb.rdogs.databinding.ListOfBreedsRvItemBinding
 import com.polodarb.rdogs.databinding.PhotosOfDogsRvItemBinding
 
 class PhotosOfBreedsRV(

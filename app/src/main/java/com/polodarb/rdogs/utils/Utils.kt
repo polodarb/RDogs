@@ -6,13 +6,13 @@ import android.net.NetworkCapabilities
 import android.os.Build
 import android.view.HapticFeedbackConstants
 import android.view.View
-import androidx.annotation.RequiresApi
+import com.polodarb.rdogs.data.local.Breed
 import java.util.Locale
 
 object Utils {
 
-    fun listConverter(list: Map<String, List<String>>): List<String> {
-        return list.flatMap { e ->
+    fun listConverter(list: Map<String, List<String>>): List<Breed> {
+        val convertList = list.flatMap { e ->
             e.value.map { it ->
                 "${e.key.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.ROOT) else it.toString() }} $it"
             }.ifEmpty {
@@ -21,6 +21,14 @@ object Utils {
                 })
             }
         }
+
+        val listBreed = arrayListOf<Breed>()
+
+        convertList.map {
+            listBreed.add(Breed(0, it))
+        }
+
+        return listBreed
     }
 
     fun isNetworkAvailable(context: Context?): Boolean {

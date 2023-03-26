@@ -1,14 +1,11 @@
 package com.polodarb.rdogs.ui.fragments
 
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
-import android.view.HapticFeedbackConstants
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
@@ -17,18 +14,15 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.polodarb.rdogs.R
 import com.polodarb.rdogs.databinding.FragmentPhotosOfDogsBinding
 import com.polodarb.rdogs.ui.recyclers.PhotosOfBreedsRV
-import com.polodarb.rdogs.ui.viewModels.ListOfBreedsViewModel
 import com.polodarb.rdogs.ui.viewModels.PhotosOfBreedsViewModel
-import com.polodarb.rdogs.ui.viewModels.UiState
+import com.polodarb.rdogs.ui.viewModels.UiStatePOF
 import com.polodarb.rdogs.utils.Utils
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import java.util.Locale
+import java.net.URLEncoder
 
 @AndroidEntryPoint
 class PhotosOfDogsFragment : Fragment() {
@@ -58,9 +52,17 @@ class PhotosOfDogsFragment : Fragment() {
             binding.topbarPhotos.title = result
 
             if (result != null) {
-                val convertedResult = result.lowercase().replace(' ', '/')
-                Toast.makeText(requireContext(), "$convertedResult", Toast.LENGTH_SHORT).show()
-                viewModel.getPhotos(convertedResult)
+                val convertedResult = result.lowercase()
+
+                val words = convertedResult.split("\\s+".toRegex()).map { word ->
+                    word.replace("""^[,\.]|[,\.]$""".toRegex(), "")
+                }
+
+                if (words.count() > 1)
+                    viewModel.getPhotosBySubBreed(words[0], words[1])
+                else
+                    viewModel.getPhotosByBreed(words[0])
+
             }
         }
 
@@ -68,20 +70,22 @@ class PhotosOfDogsFragment : Fragment() {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.state.collect { uiState ->
                     when (uiState) {
-                        is UiState.Success -> {
+                        is UiStatePOF.Success -> {
+                            binding.errorLoadPhotosLayout.root.visibility = View.GONE
                             binding.shimmerLayout.visibility = View.GONE
-                            val adapter = PhotosOfBreedsRV(uiState.data as List<String>)
+                            val adapter = PhotosOfBreedsRV(uiState.data)
                             binding.rvPhotos.adapter = adapter
                         }
 
-                        is UiState.Loading -> {
+                        is UiStatePOF.Loading -> {
                             binding.shimmerLayout.visibility = View.VISIBLE
                             binding.shimmerLayout.startShimmer()
                         }
 
-                        is UiState.Error -> {
-                            findNavController().navigate(R.id.action_listOfBreedsFragment_to_networkErrorFragment)
+                        is UiStatePOF.Error -> {
                             binding.shimmerLayout.visibility = View.GONE
+                            binding.rvPhotos.visibility = View.GONE
+                            binding.errorLoadPhotosLayout.root.visibility = View.VISIBLE
                         }
                     }
                 }
